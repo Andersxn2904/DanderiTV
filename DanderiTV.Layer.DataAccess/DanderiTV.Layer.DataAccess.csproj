@@ -8,6 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="FluentMigrator" Version="5.1.0" />
+    <PackageReference Include="FluentMigrator.Runner" Version="5.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DanderiTV\DanderiTV.csproj" />
   </ItemGroup>
 
 </Project>
