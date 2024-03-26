@@ -12,7 +12,7 @@ namespace DanderiTV.Layer.DataAccess.Migrations
             //Based on Class Serie defined on DanderiTV.Layer.DataAccess.Entities
             #region Tables
             Create.Table(Tables.Series.ToString())
-                .WithColumn("Id").AsInt32().PrimaryKey().Identity()
+                .WithColumn("ID").AsInt32().PrimaryKey().Identity()
                 .WithColumn("Name").AsString(100)
                 .WithColumn("CoverUrl").AsString(100)
                 .WithColumn("VideoUrl").AsString(100)
@@ -22,12 +22,12 @@ namespace DanderiTV.Layer.DataAccess.Migrations
                 .WithColumn("Created").AsDateTime();
 
             Create.Table(Tables.Producers.ToString())
-               .WithColumn("Id").AsInt32().PrimaryKey().Identity()
+               .WithColumn("ID").AsInt32().PrimaryKey().Identity()
                .WithColumn("Name").AsString(100)
                .WithColumn("Created").AsDateTime();
 
             Create.Table(Tables.Genres.ToString())
-               .WithColumn("Id").AsInt32().PrimaryKey().Identity()
+               .WithColumn("ID").AsInt32().PrimaryKey().Identity()
                .WithColumn("Name").AsString(100)
                .WithColumn("Created").AsDateTime();
 
@@ -40,15 +40,15 @@ namespace DanderiTV.Layer.DataAccess.Migrations
             #region Series
             Create.ForeignKey("FK_Producer_Serie")
                 .FromTable(Tables.Series.ToString()).ForeignColumn("ProducerID")
-                .ToTable(Tables.Producers.ToString()).PrimaryColumn("Id");
+                .ToTable(Tables.Producers.ToString()).PrimaryColumn("ID");
 
             Create.ForeignKey("FK_Serie_Genre_MainG")
                 .FromTable(Tables.Series.ToString()).ForeignColumn("MainGenreID")
-                .ToTable(Tables.Genres.ToString()).PrimaryColumn("Id");
+                .ToTable(Tables.Genres.ToString()).PrimaryColumn("ID");
 
             Create.ForeignKey("FK_Serie_Genre_SecG")
                .FromTable(Tables.Series.ToString()).ForeignColumn("SecondaryGenreID")
-               .ToTable(Tables.Genres.ToString()).PrimaryColumn("Id");
+               .ToTable(Tables.Genres.ToString()).PrimaryColumn("ID");
 
             #endregion
 
