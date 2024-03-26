@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DanderiTV.Layer.Application.Interfaces.Repositories;
+using DanderiTV.Layer.DataAccess.Contexts;
+using DanderiTV.Layer.DataAccess.Entities;
 
 namespace DanderiTV.Layer.Application.Repositories
 {
-    internal class ProducerRepository
+    public class ProducerRepository : GenericRepository<Producer>, IProducerRepository
     {
+        public ProducerRepository(DapperContext context) : base(context) { }
     }
 }

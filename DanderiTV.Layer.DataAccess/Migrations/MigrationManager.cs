@@ -16,7 +16,7 @@ namespace DanderiTV.Layer.DataAccess.Migrations
 
                         try
                         {
-                             databaseService.CreateDatabase("DanderiTV");
+                             //databaseService.CreateDatabase("DanderiTV");
 
                                //migrationService.ListMigrations();
                                //migrationService.MigrateUp(2410230001);

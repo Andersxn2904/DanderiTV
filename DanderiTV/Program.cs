@@ -21,6 +21,7 @@ builder.Services.AddTransient<IServiceProvider, ServiceProvider>();
 builder.Services.AddSingleton<DapperContext>();
 builder.Services.AddSingleton<DatabaseSetting>();
 builder.Services.AddScoped<IMigrationRunner, MigrationRunner>();
+
 builder.Services.AddLogging(c => c.AddFluentMigratorConsole())
         .AddFluentMigratorCore()
         .ConfigureRunner(c => c.AddSqlServer()
@@ -78,17 +79,20 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-using (var scope = app.Services.CreateScope())
-{
+//Esto sirve para ejecutar el migration
 
-    var services = scope.ServiceProvider;
+//using (var scope = app.Services.CreateScope())
+//{
 
-
-    var migrationService = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
-    migrationService.ListMigrations();
+//    var services = scope.ServiceProvider;
 
 
-}
+//    var migrationService = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
+//migrationService.MigrateUp();
+//    migrationService.ListMigrations();
+
+
+//}
 
 app.Run();
 

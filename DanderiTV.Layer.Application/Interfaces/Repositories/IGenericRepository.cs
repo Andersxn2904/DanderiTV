@@ -6,7 +6,7 @@ namespace DanderiTV.Layer.Application.Interfaces.Repositories
         Task<T> FindById(int ID);
         Task<IEnumerable<T>> GetAll();
         Task<T> Add(T entity);
-        Task<T> Update(T entity);
+        Task<T> Update(T entity, int Id);
         Task<bool> Delete(T entity);
 
 
