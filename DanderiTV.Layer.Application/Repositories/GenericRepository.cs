@@ -62,20 +62,20 @@ namespace DanderiTV.Layer.Application.Repositories
         }
 
         public async Task<IEnumerable<T>> GetAll()
-        {
-            IEnumerable<T> result = null;
-
-            try
             {
-                string tableName = GetTableName();
-                string query = $"SELECT * FROM {tableName}";
+                IEnumerable<T> result = null;
 
-                result = await _dbConnection.QueryAsync<T>(query);
+                try
+                {
+                    string tableName = GetTableName();
+                    string query = $"SELECT * FROM {tableName}";
+
+                    result = await _dbConnection.QueryAsync<T>(query);
+                }
+                catch (Exception ex) { }
+
+                return result;
             }
-            catch (Exception ex) { }
-
-            return result;
-        }
 
         public async Task<T> FindById(int Id)
         {

@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\DanderiTV.Layer.DataAccess\DanderiTV.Layer.DataAccess.csproj" />
   </ItemGroup>
 

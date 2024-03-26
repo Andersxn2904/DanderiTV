@@ -1,0 +1,87 @@
+﻿@using DanderiTV.Layer.Application.Models.Serie;
+@model List<SerieViewModel>
+@{
+    ViewData["Title"] = "Series";
+}
+
+<div class="container-fluid">
+
+    <div class="row mb-3">
+        <h2>Series</h2>
+        <div class="col-12 d-flex justify-content-end">
+            <a asp-controller="Series" asp-action="Create" class="btn btn-outline-danger">Add series</a>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        @if (Model == null || Model.Count == 0)
+        {
+            <h4>No series added.</h4>
+        }
+        else
+        {
+			<!-- Serie's card-->
+			<section @* class="dark" *@>
+				<div class="container py-4">
+					<h1 class="h1 text-center" id="pageHeaderTitle">YOUR MOVIES</h1>
+					@foreach (SerieViewModel item in Model)
+					{
+
+
+						<article class="postcard dark blue">
+							<a class="postcard__img_link" href="#">
+								<img class="postcard__img" src="@item.CoverUrl" alt="Image Title" />
+							</a>
+							<div class="postcard__text">
+								<h1 class="postcard__title blue"><a href="#">@item.Name</a></h1>
+								<div class="postcard__subtitle small">
+									<time datetime="2020-05-25 12:00:00">
+										<i class="fas fa-calendar-alt mr-2"></i>@item.Producer
+									</time>
+								</div>
+								<div class="postcard__bar"></div>
+
+								<ul class="postcard__tagbox">
+
+									<li class="tag__item"><i class="fas fa-tag mr-2"></i>@item.MainGenre </li>
+									<li class="tag__item"><i class="fas fa-clock mr-2"></i>@item.SecondaryGenre</li>
+									<li class="tag__item play blue">
+										<a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
+									</li>
+								</ul>
+							</div>
+						</article>
+
+						@* <article class="postcard light blue">
+				<a class="postcard__img_link" href="#">
+				<img class="postcard__img" src="@item.ImagePath" alt="Image Title" />
+				</a>
+				<div class="postcard__text t-dark">
+				<h1 class="postcard__title blue"><a href="#">@item.Name</a></h1>
+				<div class="postcard__subtitle small">
+				<time datetime="2020-05-25 12:00:00">
+				<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
+				</time>
+				</div>
+				<div class="postcard__bar"></div>
+
+				<ul class="postcard__tagbox">
+				<li class="tag__item"><i class="fas fa-tag mr-2"></i>Podcast</li>
+				<li class="tag__item"><i class="fas fa-clock mr-2"></i>55 mins.</li>
+				<li class="tag__item play blue">
+				<a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
+				</li>
+				</ul>
+				</div>
+				</article> *@
+
+
+
+					}
+				</div>
+			</section>
+		}
+    </div>
+</div>
+
+

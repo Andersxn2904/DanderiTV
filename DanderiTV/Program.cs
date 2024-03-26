@@ -1,5 +1,5 @@
 using FluentMigrator.Runner;
-
+using DanderiTV.Layer.Application;
 using System.Reflection;
 using DanderiTV.Layer.DataAccess.Contexts;
 using DanderiTV.Layer.DataAccess;
@@ -21,7 +21,7 @@ builder.Services.AddTransient<IServiceProvider, ServiceProvider>();
 builder.Services.AddSingleton<DapperContext>();
 builder.Services.AddSingleton<DatabaseSetting>();
 builder.Services.AddScoped<IMigrationRunner, MigrationRunner>();
-
+builder.Services.AddApplicationLayer();
 builder.Services.AddLogging(c => c.AddFluentMigratorConsole())
         .AddFluentMigratorCore()
         .ConfigureRunner(c => c.AddSqlServer()
