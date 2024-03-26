@@ -10,4 +10,9 @@
     <PackageReference Include="FluentMigrator.Runner" Version="5.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DanderiTV.Layer.Application\DanderiTV.Layer.Application.csproj" />
+    <ProjectReference Include="..\DanderiTV.Layer.DataAccess\DanderiTV.Layer.DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>

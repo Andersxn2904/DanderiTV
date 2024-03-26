@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System.Data;
 
+
 namespace DanderiTV.Layer.DataAccess.Contexts
 {
     public class DapperContext
@@ -11,5 +12,6 @@ namespace DanderiTV.Layer.DataAccess.Contexts
 
         public IDbConnection CreateConnection()
         => new SqlConnection(_configuration.GetConnectionString("ConnetionMaster"));
+
     }
 }

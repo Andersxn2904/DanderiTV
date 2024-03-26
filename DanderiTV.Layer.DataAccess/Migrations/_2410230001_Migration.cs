@@ -1,10 +1,11 @@
 ﻿using DanderiTV.Layer.DataAccess.Enums;
 using FluentMigrator;
-
+    
 namespace DanderiTV.Layer.DataAccess.Migrations
 {
-    [Migration(24102300001)]
-    public class InitialMigration : Migration
+    [Migration(2410230001)]
+
+    public class _2410230001_Migration : Migration
     {
         public override void Up()
         {

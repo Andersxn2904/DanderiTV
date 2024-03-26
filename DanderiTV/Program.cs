@@ -1,47 +1,50 @@
 using FluentMigrator.Runner;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
+
 using System.Reflection;
-using DanderiTV.Layer.DataAccess.Context;
+using DanderiTV.Layer.DataAccess.Contexts;
+using DanderiTV.Layer.DataAccess;
+using DanderiTV.Layer.DataAccess.Migrations;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//builder.Services.AddLogging(c => c.AddFluentMigratorConsole())
+//        .AddFluentMigratorCore()
+//        .ConfigureRunner(c => c.AddSqlServer()  
+//            .WithGlobalConnectionString(builder.Configuration.GetConnectionString("ConnetionMaster"))
+//            .ScanIn(Assembly.GetExecutingAssembly()).For.Migrations());
+
+
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IServiceProvider, ServiceProvider>();
 builder.Services.AddSingleton<DapperContext>();
-
+builder.Services.AddSingleton<DatabaseSetting>();
+builder.Services.AddScoped<IMigrationRunner, MigrationRunner>();
 builder.Services.AddLogging(c => c.AddFluentMigratorConsole())
         .AddFluentMigratorCore()
-        .ConfigureRunner(c => c.AddSqlServer2012()
+        .ConfigureRunner(c => c.AddSqlServer()
             .WithGlobalConnectionString(builder.Configuration.GetConnectionString("ConnetionMaster"))
-            .ScanIn(Assembly.GetExecutingAssembly()).For.Migrations());
+            .ScanIn(Assembly.GetExecutingAssembly()).For.All());
+
+
+
+
+
+
+
 var app = builder.Build();
 
-var serviceProvider = app.Services;
 
 
 
-using (var scope = serviceProvider.CreateScope())
-{
-    var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
-    runner.MigrateUp();
-}
 
-using (var scope = app.Services.CreateScope())
-{
 
-    var services = scope.ServiceProvider;
 
-    try
-    {
-       
-    }
-    catch (Exception ex)
-    {
 
-    }
-}
+//app.MigrateDatabase();
+
+
 
 //public static IServiceProvider CreateServices()
 //{
@@ -75,4 +78,18 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+using (var scope = app.Services.CreateScope())
+{
+
+    var services = scope.ServiceProvider;
+
+
+    var migrationService = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
+    migrationService.ListMigrations();
+
+
+}
+
 app.Run();
+
+
