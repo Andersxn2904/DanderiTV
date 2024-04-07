@@ -9,13 +9,13 @@ namespace DanderiTV.Layer.DataAccess.Migrations
     {
         public override void Up()
         {
-            //Based on Class Serie defined on DanderiTV.Layer.DataAccess.Entities
+            //Based on Class Serie,Producer,Genre defined on DanderiTV.Layer.DataAccess.Entities
             #region Tables
             Create.Table(Tables.Series.ToString())
                 .WithColumn("ID").AsInt32().PrimaryKey().Identity()
                 .WithColumn("Name").AsString(100)
-                .WithColumn("CoverUrl").AsString(100)
-                .WithColumn("VideoUrl").AsString(100)
+                .WithColumn("CoverUrl").AsString(int.MaxValue)
+                .WithColumn("VideoUrl").AsString(int.MaxValue)
                 .WithColumn("ProducerID").AsInt32()
                 .WithColumn("MainGenreID").AsInt32()
                 .WithColumn("SecondaryGenreID").AsInt32()

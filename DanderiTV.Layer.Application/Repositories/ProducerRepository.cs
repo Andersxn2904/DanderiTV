@@ -7,5 +7,6 @@ namespace DanderiTV.Layer.Application.Repositories
     public class ProducerRepository : GenericRepository<Producer>, IProducerRepository
     {
         public ProducerRepository(DapperContext context) : base(context) { }
+
     }
 }

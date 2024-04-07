@@ -27,8 +27,9 @@ namespace DanderiTV.Layer.Application
             #endregion
 
             #region Services Injection
-            //services.AddTransient(typeof(IGenericService<,,>), typeof(GenericService<,,>));
             services.AddTransient<ISerieServices, SerieService>();
+            services.AddTransient<IProducersServices, ProducerService>();
+            services.AddTransient<IGenresServices, GenreService>();
             #endregion
 
         }

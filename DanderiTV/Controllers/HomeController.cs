@@ -1,4 +1,6 @@
+using DanderiTV.Layer.Application.Interfaces.Services;
 using DanderiTV.Models;
+using DanderiTV.SettingsView;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,16 +8,15 @@ namespace DanderiTV.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        private readonly ISerieServices _serieService;
 
-        public IActionResult Index()
+        public HomeController(ISerieServices serieService) { _serieService = serieService; }
+
+        public async Task<IActionResult> Index()
         {
-            return View();
+            ViewData["ViewModeTV"] = "Series";
+            return View(await _serieService.GetAll());
         }
 
         public IActionResult Privacy()
@@ -23,10 +24,24 @@ namespace DanderiTV.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-    }
+
+        [HttpPost]
+		public IActionResult ChangeViewMode(bool isChecked)
+		{
+			if (isChecked)
+			{
+				GetViewMode.ViewMode = "light";
+			}
+			else
+			{
+				GetViewMode.ViewMode = "dark";
+			}
+
+			// Devuelve la URL de la vista a la que deseas redirigir
+			return Json(new { url = Url.Action("Index") });
+		}
+
+
+
+	}
 }

@@ -62,7 +62,7 @@ namespace DanderiTV.Layer.Application.Repositories
         }
 
         public async Task<IEnumerable<T>> GetAll()
-            {
+        {
                 IEnumerable<T> result = null;
 
                 try
@@ -75,7 +75,7 @@ namespace DanderiTV.Layer.Application.Repositories
                 catch (Exception ex) { }
 
                 return result;
-            }
+        }
 
         public async Task<T> FindById(int Id)
         {

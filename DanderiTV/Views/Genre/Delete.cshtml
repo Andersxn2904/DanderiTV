@@ -1,0 +1,24 @@
+﻿@using DanderiTV.Layer.Application.Models.Genres
+@model GenresViewModel;
+
+@{
+    ViewData["Title"] = "Delete Genres";
+}
+
+<div class="modal modal-sheet position-static d-block p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content rounded-3 shadow">
+            <div class="modal-body p-4 text-center">
+                <h5 class="mb-0">Delete this genre?</h5>
+                <h4 class="mt-1 text-danger">@Model.Name</h4>
+
+            </div>
+            <form class="modal-footer flex-nowrap p-0" asp-controller="Genre" asp-action="DeleteGenre" method="post">
+                <input type="hidden" asp-for="Id" />
+                <button type="submit" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong>Yes, delete</strong></button>
+                <a asp-controller="Genre" asp-action="Index" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0">No thanks</a>
+            </form>
+        </div>
+    </div>
+</div>
+
