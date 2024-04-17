@@ -8,5 +8,12 @@ namespace DanderiTV.Layer.Application.Interfaces.Services
 	{
 		Task<IEnumerable<SerieViewModel>> GetAll();
 		Task<Serie> CreateAsync(SaveSerieModel model);
+
+		Task<SerieViewModel> GetByID(int ID);
+
+		Task<Serie> Update(SaveSerieModel SerieToAdd, int id);
+		Task<SaveSerieModel> GetByIDSaveModel(int ID);
+
+
 	}
 }

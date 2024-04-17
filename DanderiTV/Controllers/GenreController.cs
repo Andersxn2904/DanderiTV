@@ -22,14 +22,25 @@ namespace DanderiTV.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateGenre(SaveGenreModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
             await _genreservice.CreateAsync(model);
 
-            return RedirectToRoute(new { controller = "Home", action = "Index" });
+            return RedirectToRoute(new { controller = "Genre", action = "Index" });
+
+        }
+      
+        public async Task<IActionResult> CreateGenre()
+        {
+            SaveGenreModel sm = new();
+
+             return View(sm);
+            
+
+           
 
         }
 
@@ -39,9 +50,32 @@ namespace DanderiTV.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> DeleteGenre([FromBody]int Id)
+        public async Task<IActionResult> DeleteGenre(int Id)
         {
             await _genreservice.Delete(Id);
+            return RedirectToRoute(new { controller = "Genre", action = "Index" });
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var FoundModel = await _genreservice.FindByIdModel(id);
+
+            SaveGenreModel model = new();
+
+            model.Id = FoundModel.Id;
+            model.Name = FoundModel.Name;
+        
+            return View("CreateGenre", model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(SaveGenreModel vm)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("CreateGenre", vm);
+            }
+            await _genreservice.Update(vm, vm.Id);
             return RedirectToRoute(new { controller = "Genre", action = "Index" });
         }
 

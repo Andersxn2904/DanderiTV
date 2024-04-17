@@ -14,5 +14,7 @@ namespace DanderiTV.Layer.Application.Interfaces.Services
         Task<GenresViewModel> FindByIdModel(int id);
 
         Task Delete(int id);
+
+        Task<Genre> Update(SaveGenreModel model, int id);
     }
 }

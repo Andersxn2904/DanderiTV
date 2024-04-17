@@ -1,6 +1,8 @@
 ﻿using DanderiTV.Layer.Application.Interfaces.Services;
 using DanderiTV.Layer.Application.Models.Serie;
+using DanderiTV.Layer.Application.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace DanderiTV.Controllers
 {
@@ -28,16 +30,67 @@ namespace DanderiTV.Controllers
             await _serieService.CreateAsync(vm);
             return RedirectToRoute(new { controller = "Home", action = "Index" });
         }
-
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> ViewTrailer([FromRoute] int ID)
         {
+            var serieTask = _serieService.GetByID(ID);
+            var serie = await serieTask;
+
+            return View(serie);
+        }
+
+		[HttpPost]
+		public async Task<IActionResult> Edit(SaveSerieModel vm)
+		{
+			vm.Genres = await _genresServices.GetAll();
+			vm.Producers = await _producersServices.GetAll();
+
+			if (!ModelState.IsValid)
+			{
+
+				return View("CreateSerie", vm);
+			}
+			else
+			{
+				await _serieService.Update(vm,vm.ID);
+				return RedirectToRoute(new { controller = "Home", action = "Index" });
+			}
+		}
+
+		public async Task<IActionResult> Edit(int id)
+		{
+			SaveSerieModel vm = await _serieService.GetByIDSaveModel(id);
+			vm.Genres = await _genresServices.GetAll();
+			vm.Producers = await _producersServices.GetAll();
+
+			return View("CreateSerie", vm);
+		}
+
+
+		public async Task<IActionResult> Create()
+        {
+            Stopwatch stopwatch = Stopwatch.StartNew();
+
+            var serieGetAllTask = _genresServices.GetAll();
+            var producerGetAllTask = _producersServices.GetAll();
+
             SaveSerieModel vm = new()
             {
-                Genres = await _genresServices.GetAll(),
-                Producers = await _producersServices.GetAll(),
+                Genres = await serieGetAllTask,
+                Producers = await producerGetAllTask
+
+
             };
-            
+
+            stopwatch.Stop();
+            Console.WriteLine($"Time: {stopwatch.Elapsed}");
+
+          
+
+
+
+
             return View("CreateSerie", vm);
+           
         }
     }
 }

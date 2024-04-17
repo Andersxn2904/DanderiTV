@@ -1,5 +1,5 @@
-﻿@* @using DanderiTV.Layer.Application.Interfaces.Services;
-@model List<ProducerViewModel>;
+﻿@using DanderiTV.Layer.Application.Models.Producers;
+@model IEnumerable<ProducerViewModel>;
 @{
     ViewData["Title"] = "Producers";
 }
@@ -8,10 +8,10 @@
     <h2>Producers</h2>
     <div class="row mb-3">
         <div class="col-12 d-flex justify-content-end">
-            <a asp-controller="Producer" asp-action="Create" class="btn btn-outline-danger">Add producer</a>
+            <a asp-controller="Producer" asp-action="CreateProducer" class="btn btn-outline-danger">Add producer</a>
         </div>
     </div>
-    @if (Model == null || Model.Count == 0)
+    @if (Model == null @* || Model.Count == 0 *@)
     {
         <h4>No producers added.</h4>
     }
@@ -54,4 +54,4 @@
             </table>
         </div>
     }
-</div> *@
+</div>

@@ -11,11 +11,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApp", "WebApp", "{D8EC4786-ABF1-4BF7-908E-22118C789384}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DanderiTV.Layer.Application", "DanderiTV.Layer.Application\DanderiTV.Layer.Application.csproj", "{09EAE391-C4B0-42A3-BEF8-18932AF3A9E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DanderiTV.Layer.Application", "DanderiTV.Layer.Application\DanderiTV.Layer.Application.csproj", "{09EAE391-C4B0-42A3-BEF8-18932AF3A9E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DanderiTV.Layer.DataAccess", "DanderiTV.Layer.DataAccess\DanderiTV.Layer.DataAccess.csproj", "{77B8D21E-1330-4500-ACB4-700CAED26B1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DanderiTV.Layer.DataAccess", "DanderiTV.Layer.DataAccess\DanderiTV.Layer.DataAccess.csproj", "{77B8D21E-1330-4500-ACB4-700CAED26B1D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DanderiTV", "DanderiTV\DanderiTV.csproj", "{5F4917FE-A84E-474E-83BB-B0C91A09F615}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DanderiTV", "DanderiTV\DanderiTV.csproj", "{5F4917FE-A84E-474E-83BB-B0C91A09F615}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

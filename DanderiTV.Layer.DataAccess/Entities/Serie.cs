@@ -9,9 +9,9 @@ namespace DanderiTV.Layer.DataAccess.Entities
     public class Serie : BaseEntity
     {
         [Column("CoverUrl")]
-        public string CoverUrlProperty { get; set; }
+        public string CoverUrl { get; set; }
         [Column("VideoUrl")]
-        public string VideoUrlProperty { get; set; }
+        public string VideoUrl { get; set; }
         [Column("ProducerID")]
         public int ProducerID { get; set; }
         [Column("MainGenreID")]

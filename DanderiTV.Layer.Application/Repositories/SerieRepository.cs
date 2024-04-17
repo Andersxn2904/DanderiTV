@@ -34,5 +34,30 @@ namespace DanderiTV.Layer.Application.Repositories
             return result;
         }
 
+        public async Task<SerieViewModel> FindByIDWithAll(int id)
+        {
+            SerieViewModel result = null;
+
+            try
+            {
+                string tableName = Tables.Series.ToString();
+                string query = $"SELECT s.*, g1.Name AS MainGenre, g2.Name AS SecondaryGenre, p.Name AS Producer " +
+                               $"FROM {tableName} s " +
+                               $"LEFT JOIN Genres g1 ON s.MainGenreID = g1.ID " +
+                               $"LEFT JOIN Genres g2 ON s.SecondaryGenreID = g2.ID " +
+                               $"LEFT JOIN Producers p ON s.ProducerID = p.ID " +
+                               $"WHERE s.ID = @id";
+
+                result = await _dbConnection.QueryFirstOrDefaultAsync<SerieViewModel>(query, new { id });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+            return result;
+        }
+
+
     }
 }

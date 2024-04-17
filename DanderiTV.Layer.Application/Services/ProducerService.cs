@@ -3,6 +3,7 @@ using DanderiTV.Layer.Application.Interfaces.Repositories;
 using DanderiTV.Layer.Application.Interfaces.Services;
 using DanderiTV.Layer.Application.Models.Genres;
 using DanderiTV.Layer.Application.Models.Producers;
+using DanderiTV.Layer.DataAccess.Entities;
 
 namespace DanderiTV.Layer.Application.Services
 {
@@ -20,6 +21,54 @@ namespace DanderiTV.Layer.Application.Services
             return listmodel;
 
         }
+
+        public async Task<Producer> CreateAsync(SaveProducerModel model)
+        {
+            var Genre = new Producer()
+            {
+                Name = model.Name,
+
+
+            };
+            Producer ProducerAdded = await _Producersrespository.Add(Genre);
+
+            return ProducerAdded;
+
+        }
+
+        public async Task<ProducerViewModel> FindByIdModel(int id)
+        {
+
+            Producer Producer = await _Producersrespository.FindById(id);
+            ProducerViewModel ViewModel = new()
+            {
+                Id = Producer.ID,
+                Name = Producer.Name
+            };
+
+            return ViewModel;
+
+        }
+
+        public async Task<Producer> Update(SaveProducerModel model, int id)
+        {
+
+            Producer producer = await _Producersrespository.FindById(id);
+            producer.Name = model.Name;
+            Producer ProducerUpdated = await _Producersrespository.Update(producer, id);
+
+            return ProducerUpdated;
+
+        }
+
+        public async Task Delete(int id)
+        {
+            Producer genre = await _Producersrespository.FindById(id);
+
+            await _Producersrespository.Delete(genre);
+        }
+
+
 
     }
 }

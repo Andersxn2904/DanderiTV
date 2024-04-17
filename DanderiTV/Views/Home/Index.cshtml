@@ -6,7 +6,7 @@
 }
 
 
-	<section @* class="dark" *@>
+	<section>
 
 		<div class="container py-4">
 		<h1 class="h1 text-center" id="pageHeaderTitle">YOUR MOVIES</h1>
@@ -44,7 +44,10 @@
 								<li class="tag__item"><i class="fas fa-tag mr-2"></i>@item.MainGenre </li>
 								<li class="tag__item"><i class="fas fa-clock mr-2"></i>@item.SecondaryGenre</li>
 								<li class="tag__item play blue">
-									<a href="#"><i class="fas fa-play mr-2"></i>Play Episode</a>
+									<a asp-controller="Serie" asp-action="Edit" asp-route-id="@item.ID"><i class="fas fa-play mr-2"></i>Edit</a>
+								</li>
+								<li class="tag__item play blue">
+								<a asp-controller="Serie" asp-action="ViewTrailer" asp-route-id="@item.ID"><i class="fas fa-play mr-2"></i>Play Episode</a>
 								</li>
 							</ul>
 						</div>

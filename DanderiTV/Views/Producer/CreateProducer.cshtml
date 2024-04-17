@@ -1,16 +1,16 @@
-﻿@using DanderiTV.Layer.Application.Models.Genres;
-@model SaveGenreModel;
+﻿@using DanderiTV.Layer.Application.Models.Producers;
+@model SaveProducerModel;
 @{
-    bool editMode = Model.Id == 0 ? false : true;
-    ViewData["Title"] = "Save Genre";
+    bool editMode = Model.ID == 0 ? false : true;
+    ViewData["Title"] = "Save Producer";
 }
 
 <div class="container">
     <div class="col-6 offset-3">
         <h1>
-            @(editMode ? $"Edit genre: {Model.Name}" : "New genre")
+            @(editMode ? $"Edit producer: {Model.Name}" : "New producer")
         </h1>
-        <form class="needs-validation" method="post" asp-controller="Genre" asp-action="@(editMode ? "Edit" : "CreateGenre")" novalidate="">
+        <form class="needs-validation" method="post" asp-controller="Producer" asp-action="@(editMode ? "Edit" : "CreateProducer")" novalidate="">
             <div class="row g-3">
                 <div class="col-12">
                     <label asp-for="Name" class="form-label">Name</label>
@@ -18,17 +18,15 @@
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
             </div>
-            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="ID" />
             <div class="mt-3">
                 <button class="btn btn-success" type="submit">Save</button>
-                <a asp-controller="Genre" asp-action="Index" class="btn btn-warning">Go back</a>
+                <a asp-controller="Producer" asp-action="Index" class="btn btn-warning">Go back</a>
             </div>
         </form>
     </div>
 
 
 </div>
-
-
 
 

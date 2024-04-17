@@ -1,5 +1,7 @@
 ﻿
+using DanderiTV.Layer.Application.Models.Genres;
 using DanderiTV.Layer.Application.Models.Producers;
+using DanderiTV.Layer.DataAccess.Entities;
 
 
 namespace DanderiTV.Layer.Application.Interfaces.Services
@@ -8,6 +10,10 @@ namespace DanderiTV.Layer.Application.Interfaces.Services
     {
         Task<IEnumerable<ProducerViewModel>> GetAll();
 
-        //Task<Serie> CreateAsync(SaveSerieModel model);
+        Task<Producer> CreateAsync(SaveProducerModel model);
+        Task<ProducerViewModel> FindByIdModel(int id);
+
+        Task<Producer> Update(SaveProducerModel model, int id);
+        Task Delete(int id);
     }
 }

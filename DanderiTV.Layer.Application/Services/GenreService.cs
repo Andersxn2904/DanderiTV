@@ -16,7 +16,7 @@ namespace DanderiTV.Layer.Application.Services
 
            var listmodel = models.Select(g => new GenresViewModel { Name = g.Name, Id = g.ID });
 
-            return listmodel;
+           return listmodel;
 
         }
 
@@ -53,6 +53,17 @@ namespace DanderiTV.Layer.Application.Services
             Genre genre = await _Genresrespository . FindById(id);
 
             await _Genresrespository.Delete(genre);
+        }
+
+        public async Task<Genre> Update(SaveGenreModel model, int id)
+        {
+
+            Genre genre = await _Genresrespository.FindById(id);
+            genre.Name = model.Name;
+            Genre GenreUpdated = await _Genresrespository.Update(genre, id);
+
+            return GenreUpdated;
+
         }
 
 

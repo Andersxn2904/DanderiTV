@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DanderiTV.Layer.DataAccess.Repositories
 {
-    internal class GenericRepository
+    public class GenericRepository
     {
+
     }
 }

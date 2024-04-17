@@ -8,7 +8,7 @@ namespace DanderiTV.Layer.Application.Models.Serie
 {
     public class SaveSerieModel
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         [Required(ErrorMessage = "You must enter a name")]
         [DataType(DataType.Text)]

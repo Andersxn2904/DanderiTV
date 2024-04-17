@@ -8,6 +8,11 @@ namespace DanderiTV.Layer.Application.Interfaces.Repositories
     {
 		Task<IEnumerable<SerieViewModel>> GetAllWithInclude();
 
+        Task<SerieViewModel> FindByIDWithAll(int id);
 
-	}
+
+
+
+
+    }
 }

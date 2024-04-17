@@ -15,8 +15,12 @@ namespace DanderiTV.Layer.Application.Models.Serie
 
         public string? Producer { get; set; }
 
-        public string? MainGenre { get; set; }
+        public int? ProducerID { get; set; }
 
-        public string? SecondaryGenre { get; set; }
-    }
+        public string? MainGenre { get; set; }
+		public int? MainGenreID { get; set; }
+
+		public string? SecondaryGenre { get; set; }
+		public int? SecondaryGenreID { get; set; }
+	}
 }
